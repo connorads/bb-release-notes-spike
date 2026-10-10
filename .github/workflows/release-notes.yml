@@ -1,0 +1,31 @@
+name: Sync desktop release notes
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "CHANGELOG.md"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Report the releases that would change without editing them"
+        type: boolean
+        default: true
+
+concurrency:
+  group: release-notes
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Sync release notes from CHANGELOG.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: scripts/sync-release-notes.sh
