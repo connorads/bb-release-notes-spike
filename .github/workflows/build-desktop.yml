@@ -36,17 +36,17 @@ jobs:
     outputs:
       has_signing_secrets: "false"
     steps:
-      - run: true && echo '{}' > out/desktop-version.json
+      - run: "true"
   linux:
     runs-on: ubuntu-latest
     steps:
-      - run: true && echo '{}' > out/desktop-version-linux.json && echo x > out/latest-linux.yml && echo x > out/bb-x64.AppImage
+      - run: "true"
   windows:
     runs-on: ubuntu-latest
     outputs:
       has_signing_secrets: "false"
     steps:
-      - run: true && echo '{}' > out/desktop-version-windows.json && echo x > out/latest.yml && echo x > out/bb-setup.exe && echo x > out/bb-setup.exe.blockmap
+      - run: "true"
 
   publish:
     name: Publish stable desktop release
