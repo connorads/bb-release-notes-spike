@@ -37,13 +37,13 @@ jobs:
       has_signing_secrets: "false"
     steps:
       - run: mkdir out && echo '{}' > out/desktop-version.json
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with: { name: bb-desktop-macos-arm64, path: out/ }
   linux:
     runs-on: ubuntu-latest
     steps:
       - run: mkdir out && echo '{}' > out/desktop-version-linux.json && echo x > out/latest-linux.yml && echo x > out/bb-x64.AppImage
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with: { name: bb-desktop-linux-x64, path: out/ }
   windows:
     runs-on: ubuntu-latest
@@ -51,7 +51,7 @@ jobs:
       has_signing_secrets: "false"
     steps:
       - run: mkdir out && echo '{}' > out/desktop-version-windows.json && echo x > out/latest.yml && echo x > out/bb-setup.exe && echo x > out/bb-setup.exe.blockmap
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with: { name: bb-desktop-windows-x64, path: out/ }
 
   publish:
@@ -110,21 +110,21 @@ jobs:
 
       - name: Download macOS desktop artifacts
         if: steps.release_plan.outputs.should_publish == 'true'
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: bb-desktop-macos-arm64
           path: release/macos
 
       - name: Download Linux desktop artifacts
         if: steps.release_plan.outputs.should_publish == 'true'
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: bb-desktop-linux-x64
           path: release/linux
 
       - name: Download Windows desktop artifacts
         if: steps.release_plan.outputs.should_publish == 'true'
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: bb-desktop-windows-x64
           path: release/windows
