@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.47.0
+
+Late notes, added after the release was published.
+
+### Fixes
+
+- Fix the **release notes** on GitHub Releases.
+
 ## 0.46.0
 
 A new navigation rail, better thread search, reusable prompts, and more control over notifications and storage.
